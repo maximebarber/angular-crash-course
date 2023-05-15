@@ -16,11 +16,22 @@ export class TasksComponent implements OnInit {
   }
 
   deleteTask(task: Task) {
-    console.log('here: ', task);
+    console.log("🚀 ~ file: tasks.component.ts:19 ~ TasksComponent ~ deleteTask ~ deleteTask:", task)
+    
     this.taskService
       .deleteTask(task)
       .subscribe(
         () => (this.tasks = this.tasks.filter((t) => t.id !== task.id))
       );
+  }
+
+  toggleReminder(task: Task) {
+    console.log("🚀 ~ file: tasks.component.ts:28 ~ TasksComponent ~ toggleReminder ~ toggleReminder:", task)
+
+    task.reminder = !task.reminder
+    this.taskService.updateTaskReminder(task).subscribe()
+    
+    //let taskId: number = this.tasks.findIndex(((t) => t.id == task.id));
+    //this.tasks[taskId].reminder = !this.tasks[taskId].reminder
   }
 }
