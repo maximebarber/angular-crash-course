@@ -34,4 +34,8 @@ export class TasksComponent implements OnInit {
     //let taskId: number = this.tasks.findIndex(((t) => t.id == task.id));
     //this.tasks[taskId].reminder = !this.tasks[taskId].reminder
   }
+
+  addTask(task: Task) {
+    this.taskService.addTask(task).subscribe((task) => this.tasks.push(task))
+  }
 }
